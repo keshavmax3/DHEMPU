@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchal's Magical World ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffdab9 0%, #ffcba4 25%, #ffb347 50%, #ffcc99 75%, #ffdab9 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Flower Tapestry - NO PEACH FRUITS, only flowers */
+        .flower-tapestry {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .tapestry-flower {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: tapestryFloat 25s infinite linear;
+        }
+
+        @keyframes tapestryFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.8);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg) scale(1.2);
+            }
+        }
+
+        .vine {
+            position: fixed;
+            width: 100px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 182, 193, 0.1) 10px,
+                rgba(255, 182, 193, 0.1) 20px
+            );
+            z-index: 0;
+        }
+
+        .vine-left { left: 0; }
+        .vine-right { right: 0; transform: scaleX(-1); }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(255, 140, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 650px;
+            border: 3px solid #ffb347;
+            animation: gentleFade 0.6s ease-out;
+        }
+
+        @keyframes gentleFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff8c00;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 3px solid #ffdab9;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff8c00;
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.2);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff8c00, #ffb347);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+            position: relative;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+        }
+
+        /* IMPROVED YES Button with Better Eyes */
+        .yes-btn-special {
+            background: linear-gradient(45deg, #ff1493, #ff69b4) !important;
+            position: relative;
+            transition: all 0.3s ease;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: visible !important;
+        }
+
+        .face-container {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 5px;
+        }
+
+        .yes-eyes {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            pointer-events: none;
+        }
+
+        .eye {
+            width: 28px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #333;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .pupil {
+            width: 14px;
+            height: 14px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.05s ease-out;
+        }
+
+        .eye.sad {
+            background: #e6f3ff;
+        }
+
+        .eye.sad .pupil {
+            transform: translate(-50%, -10%) !important;
+        }
+
+        .eye.angry {
+            background: #ffcccc;
+            border-color: #cc0000;
+        }
+
+        .eye.angry::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: #cc0000;
+            transform: skewY(-15deg);
+            transform-origin: top left;
+        }
+
+        .eye.angry::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 40%;
+            background: #cc0000;
+            transform: skewY(15deg);
+            transform-origin: top right;
+        }
+
+        .eye.happy {
+            background: #fff0f5;
+        }
+
+        .eye.happy .pupil {
+            transform: translate(-50%, -70%) scale(0.7) !important;
+        }
+
+        .eye.crying::after {
+            content: '💧';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            animation: tearDrop 1s infinite;
+        }
+
+        @keyframes tearDrop {
+            0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(20px); opacity: 0; }
+        }
+
+        .mouth {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            border-bottom: 4px solid #333;
+            border-radius: 0 0 40px 40px;
+            transition: all 0.3s;
+            background: transparent;
+        }
+
+        .mouth.sad {
+            border-radius: 40px 40px 0 0;
+            border-bottom: none;
+            border-top: 4px solid #333;
+            height: 15px;
+            background: #e6f3ff;
+        }
+
+        .mouth.happy {
+            height: 25px;
+            background: #ff69b4;
+            border: none;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .mouth.angry {
+            border-radius: 0;
+            height: 4px;
+            background: #333;
+            border: none;
+            width: 30px;
+        }
+
+        .option-btn {
+            display: block;
+            width: 220px;
+            margin: 15px auto;
+            transition: all 0.3s ease;
+        }
+
+        .no-btn-special {
+            background: linear-gradient(45deg, #666, #999) !important;
+            position: relative;
+        }
+
+        .essay-box {
+            background: linear-gradient(135deg, #fff5ee 0%, #ffe4e1 100%);
+            border-left: 5px solid #ff8c00;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+            margin: 20px 0;
+            color: #555;
+            line-height: 2;
+            max-height: 70vh;
+            overflow-y: auto;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+        }
+
+        .essay-box p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .quiz-container {
+            background: #fff9f0;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 3px solid #ffd700;
+            text-align: left;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .option-label {
+            background: #fff;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 2px solid #ffdab9;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-label:hover {
+            background: #fff5ee;
+            border-color: #ff8c00;
+        }
+
+        .option-label input {
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #ffe4e1;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+            border: 2px solid #ffb347;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff8c00, #ffb347);
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .error-msg {
+            color: #ff4500;
+            font-weight: 600;
+            margin-top: 10px;
+            animation: gentleShake 0.5s;
+        }
+
+        @keyframes gentleShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .success-msg {
+            color: #32cd32;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .taunt-text {
+            font-style: italic;
+            color: #ff6b35;
+            font-size: 1.1rem;
+            margin: 10px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .score-display {
+            font-size: 3rem;
+            color: #ff8c00;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .rating-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            font-size: 3rem;
+        }
+
+        .star {
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #ddd;
+            position: relative;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #ffd700;
+            transform: scale(1.2);
+        }
+
+        .star.sad {
+            animation: starCry 1s infinite;
+        }
+
+        @keyframes starCry {
+            0%, 100% { transform: rotate(0deg) translateY(0); }
+            25% { transform: rotate(-10deg) translateY(5px); }
+            75% { transform: rotate(10deg) translateY(5px); }
+        }
+
+        .signature {
+            font-family: 'Pacifico', cursive;
+            color: #ff8c00;
+            font-size: 1.8rem;
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffdab9 0%, #ffb347 100%);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #ff4500;
+        }
+
+        .lord-input {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5rem;
+            color: #ff8c00;
+        }
+
+        .category-title {
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .memory-box {
+            background: #fff0f5;
+            border: 3px dashed #ff69b4;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .memory-box::before {
+            content: '💭';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Flower Tapestry Background - ONLY FLOWERS, NO PEACH FRUITS -->
+    <div class="flower-tapestry" id="tapestry"></div>
+    <div class="vine vine-left"></div>
+    <div class="vine vine-right"></div>
+
+    <div class="container">
+        <!-- Page 1: Entry Question -->
+        <div id="page1" class="card">
+            <h1>✨ Welcome to Anchal's World ✨</h1>
+            <p style="font-size: 1.2rem; color: #ff8c00; font-weight: 600;">To enter this magical realm, answer wisely:</p>
+            <h2>What was Anchal's pet name? 🐕</h2>
+            <div class="input-group">
+                <input type="text" id="pet-answer" placeholder="Type the name..." onkeypress="if(event.key === 'Enter') checkPetName()">
+            </div>
+            <button class="btn" onclick="checkPetName()">Enter ✨</button>
+            <div id="pet-error" class="error-msg hidden"></div>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">Hint: It's a dog's name, starts with C...</p>
+        </div>
+
+        <!-- Page 2: The Kite Runner Quiz -->
+        <div id="page2" class="card hidden">
+            <div class="category-title">📚 The Kite Runner Quiz 📚</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="book-progress" style="width: 0%"></div>
+            </div>
+            <p>Question <span id="book-q-num">1</span> of 10</p>
+            
+            <div class="quiz-container" id="book-quiz-container">
+                <!-- Questions injected by JS -->
+            </div>
+        </div>
+
+        <!-- Page 3: Music Artist Check - IMPROVED EYES -->
+        <div id="page3" class="card hidden">
+            <h1>🎵 Music Time! 🎵</h1>
+            <p style="font-size: 1.2rem;">Do you want to test your music knowledge, Anchal?</p>
+            <p class="taunt-text">(You know you want to...)</p>
+            
+            <div style="margin-top: 30px; min-height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+                <button id="btn-yes-music" class="btn option-btn yes-btn-special" onclick="handleMusicYes()">
+                    <div class="face-container">
+                        <div class="yes-eyes">
+                            <div class="eye" id="eye1"><div class="pupil"></div></div>
+                            <div class="eye" id="eye2"><div class="pupil"></div></div>
+                        </div>
+                        <div class="mouth" id="yes-mouth"></div>
+                    </div>
+                    <span style="margin-top: 5px;">YES 🎶</span>
+                </button>
+                
+                <button id="btn-no-music" class="btn option-btn no-btn-special" onclick="handleMusicNo()">
+                    NO 🙉
+                </button>
+            </div>
+            <div id="music-msg" style="margin-top: 20px; color: #ff1493; font-weight: 600; min-height: 30px; font-size: 1.1rem;"></div>
+        </div>
+
+        <!-- Page 4: Music Quiz -->
+        <div id="page4" class="card hidden">
+            <div class="category-title">🎸 Music Masters Quiz 🎸</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="music-progress" style="width: 0%"></div>
+            </div>
+            <p>Question <span id="music-q-num">1</span> of 8</p>
+            
+            <div class="quiz-container" id="music-quiz-container">
+                <!-- Questions injected by JS -->
+            </div>
+        </div>
+
+        <!-- Page 5: Food Quiz Intro -->
+        <div id="page5" class="card hidden">
+            <h1>🍫 Snack Time! 🍫</h1>
+            <p class="taunt-text" style="font-size: 1.3rem; animation: pulse 1s infinite;">
+                Now comes YOUR favorite round... 
+            </p>
+            <p class="taunt-text">
+                You snack muncher! 🍪<br>
+                Chips champion! 🥔<br>
+                Chocolate connoisseur! 🍫
+            </p>
+            <p>Ready to prove your foodie credentials?</p>
+            <button class="btn" onclick="goToFoodQuiz()" style="margin-top: 20px;">
+                Let's Eat! 🍕
+            </button>
+        </div>
+
+        <!-- Page 6: Food Quiz -->
+        <div id="page6" class="card hidden">
+            <div class="category-title">🍕 Foodie Challenge 🍕</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="food-progress" style="width: 0%"></div>
+            </div>
+            <p>Question <span id="food-q-num">1</span> of 10</p>
+            
+            <div class="quiz-container" id="food-quiz-container">
+                <!-- Questions injected by JS -->
+            </div>
+        </div>
+
+        <!-- Page 7: Brother Question -->
+        <div id="page7" class="card hidden">
+            <h1>👑 The Final Question 👑</h1>
+            <p style="font-size: 1.3rem; color: #ff8c00; font-weight: 600;">
+                Who is the best brother in the world?
+            </p>
+            <div style="margin: 30px 0; font-size: 2rem;">
+                <span class="lord-input">LORD </span>
+                <input type="text" id="brother-answer" placeholder="_______" style="width: 200px; font-size: 1.5rem; text-align: center; border: 3px solid #ff8c00; border-radius: 10px; padding: 10px;" onkeypress="if(event.key === 'Enter') checkBrother()">
+            </div>
+            <button class="btn" onclick="checkBrother()">Submit 👑</button>
+            <div id="brother-error" class="error-msg hidden"></div>
+        </div>
+
+        <!-- Page 8: The Essay - YOUR VERSION -->
+        <div id="page8" class="card hidden">
+            <h1>💝 For You, Anchal 💝</h1>
+            <div class="essay-box">
+                <p style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">✨ 🎵 📚 🍫 💕</p>
+                
+                <p>
+                    You know what? I don't say this often, but you are genuinely one of the most important people in my life — even if you act like a complete menace half the time. You are the perfect mix of sweet, emotional, short-tempered, and dumb in the most adorable way possible.
+                </p>
+
+                <p>
+                    Let's start with your iconic non-veg to veg transformation. I still can't get over it. One day you were enjoying chicken like it was your life purpose, and the next day you woke up and decided you were spiritually upgraded. Suddenly you couldn't even sit near non-veg without giving it a moral lecture. The drama, the seriousness, the sudden enlightenment — it was honestly cinema. I tease you about it, but deep down I admire how committed you were.
+                </p>
+
+                <p>
+                    Going to school together with you will always be one of my favorite memories. Walking side by side, sometimes laughing like best friends, sometimes fighting over the most useless things. And when you got mad? Silent treatment mode activated. You'd walk ahead like you didn't know me. But five minutes later, you'd be back to normal like nothing happened.
+                </p>
+
+                <p>
+                    Now let's talk about studies. You NEVER wanted me to teach you anything. The moment I tried explaining something, you'd say, "I know it," with so much confidence — and then two minutes later you'd be completely lost. And math… please. You can't even find the third angle of a triangle. It's 180 degrees. Basic. No wonder you chose Arts. (I will tease you about this forever, by the way.)
+                </p>
+
+                <p>
+                    You're very short-tempered. Like, extremely. One small thing and boom — volcano mode. But you're also the most emotional person I know. You care so deeply about the family, even though you never openly show it. You take huge burdens on yourself, stress quietly, and try to handle everything alone. I see that, even if you pretend you're fine.
+                </p>
+
+                <p>
+                    Sometimes you give full "dhinchaak pooja looking aah" energy, and sometimes you're just my soft, sweet gyal with strong morals and a big heart.
+                </p>
+
+                <p>
+                    You annoy me. You frustrate me. You make me laugh. But at the end of the day, you're not just my sister — you're my built-in best friend, my favorite person to roast, and someone I'll always protect.
+                </p>
+
+                <p style="text-align: center; font-weight: 600; color: #ff8c00; margin-top: 30px; font-size: 1.4rem;">
+                    And I'm always there for you, remember that. 💛
+                </p>
+            </div>
+            <button class="btn" onclick="goToFinal()">See Your Results 🎯</button>
+        </div>
+
+        <!-- Page 9: Score & Rating -->
+        <div id="page9" class="card hidden">
+            <h1>🎉 Your Final Score! 🎉</h1>
+            <div class="score-display">
+                <span id="final-score">0</span> / <span id="total-questions">30</span>
+            </div>
+            <p id="score-message" style="font-size: 1.2rem; color: #ff6b35; font-weight: 600;"></p>
+            
+            <div style="margin: 30px 0; padding: 20px; background: #fff5ee; border-radius: 15px;">
+                <h3>Rate this website:</h3>
+                <p class="taunt-text">(Remember, only 5 stars are acceptable! 😉)</p>
+                <div class="rating-container" id="rating-stars">
+                    <span class="star" onclick="handleRating(1)">⭐</span>
+                    <span class="star" onclick="handleRating(2)">⭐</span>
+                    <span class="star" onclick="handleRating(3)">⭐</span>
+                    <span class="star" onclick="handleRating(4)">⭐</span>
+                    <span class="star" onclick="handleRating(5)">⭐</span>
+                </div>
+                <div id="rating-message" style="margin-top: 10px; font-weight: 600; min-height: 30px;"></div>
+            </div>
+            
+            <button class="btn hidden" id="final-submit" onclick="submitFinal()">Finish ✨</button>
+        </div>
+
+        <!-- Page 10: Thank You -->
+        <div id="page10" class="card hidden">
+            <h1>✨ Thank You! ✨</h1>
+            <div style="font-size: 4rem; margin: 20px 0;">🙏</div>
+            <p style="font-size: 1.3rem;">Thanks for playing along, Anchal!</p>
+            <p class="taunt-text">Now go eat some fruits and nuts... you need the energy! 🍫</p>
+            <div class="signature">
+                Yours Lovingly,<br>
+                Modihh Ji 👑
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create flower tapestry - ONLY FLOWERS, NO PEACH FRUITS
+        function createTapestry() {
+            const container = document.getElementById('tapestry');
+            const flowers = ['🌸', '🌺', '🌷', '🌹', '🌻', '🌼', '🌵', '🌿', '💐', '🌾'];
+            
+            for (let i = 0; i < 15; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'tapestry-flower';
+                flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.animationDuration = (Math.random() * 15 + 20) + 's';
+                flower.style.animationDelay = Math.random() * 15 + 's';
+                flower.style.fontSize = (Math.random() * 2 + 2) + 'rem';
+                container.appendChild(flower);
+            }
+        }
+        createTapestry();
+
+        // Quiz Data
+        const bookQuestions = [
+            {
+                q: "Who is the main protagonist of The Kite Runner?",
+                options: ["Hassan", "Amir", "Baba", "Ali"],
+                correct: 1,
+                type: "mcq"
+            },
+            {
+                q: "What is the name of Amir's father?",
+                options: ["Rahim Khan", "Baba", "Ali", "Sohrab"],
+                correct: 1,
+                type: "mcq"
+            },
+            {
+                q: "Which city in Afghanistan is the main setting of the story?",
+                options: ["Kandahar", "Herat", "Kabul", "Mazar"],
+                correct: 2,
+                type: "mcq"
+            },
+            {
+                q: "What does Hassan say to Amir before running the kite?",
+                options: ["I love you", "For you, a thousand times over", "I am your servant", "Always remember this"],
+                correct: 1,
+                type: "mcq"
+            },
+            {
+                q: "What is Hassan's son's name?",
+                options: ["Sohrab", "Farid", "Zaman", "Assef"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "Fill in the blank: 'It may be unfair, but what happens in a few days, sometimes even a single day, can change the ______ of a whole lifetime.'",
+                answer: ["course"],
+                type: "fill"
+            },
+            {
+                q: "Who is the antagonist who bullies Hassan?",
+                options: ["Kamal", "Wali", "Assef", "Farid"],
+                correct: 2,
+                type: "mcq"
+            },
+            {
+                q: "What does Amir do to Hassan in the alley that he regrets forever?",
+                options: ["Beats him", "Steals from him", "Watches him get hurt without helping", "Insults his mother"],
+                correct: 2,
+                type: "mcq"
+            },
+            {
+                q: "Fill in the blank: 'There is a way to be good _______.'",
+                options: ["again", "enough", "kind", "happy"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "What country does Amir move to?",
+                options: ["Pakistan", "Iran", "America", "India"],
+                correct: 2,
+                type: "mcq"
+            }
+        ];
+
+        const musicQuestions = [
+            {
+                q: "Jack Johnson: Fill in the title - '_____ Together'",
+                options: ["Better", "Sitting", "Waiting", "Hoping"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "Jack Johnson: 'Upside _____'",
+                options: ["Down", "Out", "Over", "Around"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "Ritviz - Fill in the lyrics: 'Kya karien, kya karien, _______'",
+                options: ["Dil ki yahi hai guzarish", "Raat bhar na soye", "Duniya se darre", "Kuch bhi nahi"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "Ritviz - Which song has these lyrics: 'Jeetega dil hi, dil mein jo jeeta hai'?",
+                options: ["Sage", "Liggi", "Udd Gaye", "Thandi Hawa"],
+                correct: 2,
+                type: "mcq"
+            },
+            {
+                q: "ABBA: 'Dancing _____'",
+                options: ["Queen", "King", "Princess", "Night"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "Marias: Fill in - 'I Don't Know You' is a song by The Marias. True or False?",
+                options: ["True", "False"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "TROLL QUESTION: Which singer holds the award for getting most number of audio messages from an ugly girl?",
+                options: ["Shaan", "Sonu Nigam", "Arijit Singh", "Kumar Sanu"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "TROLL QUESTION: Who is the best beatboxer in this world?",
+                options: ["Keshav", "Rahul", "Vineeth", "None of these"],
+                correct: 0,
+                type: "mcq"
+            }
+        ];
+
+        const foodQuestions = [
+            {
+                q: "What is Anchal's most loved chocolate?",
+                options: ["Dairy Milk Silk", "Fruits and Nuts", "5 Star", "KitKat"],
+                correct: 1,
+                type: "mcq",
+                taunt: "Yes, fruits would help you a lot with your... 'healthy' lifestyle! 🍎😏"
+            },
+            {
+                q: "Which chips brand has the flavor 'Magic Masala'?",
+                options: ["Lays", "Bingo", "Kurkure", "Balaji"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "Fill in: '_____ Wafers' - Thin and crispy potato chips",
+                answer: ["parle"],
+                type: "fill"
+            },
+            {
+                q: "Which chocolate has the tagline 'Kuchh meetha ho jaaye'?",
+                options: ["Cadbury Dairy Milk", "Nestle Munch", "Amul Chocolate", "Ferrero Rocher"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "What is the main ingredient in Samosas? (Besides potatoes for the veggie ones)",
+                options: ["Love", "Oil", "Spices", "All of the above"],
+                correct: 3,
+                type: "mcq",
+                taunt: "We know you love them all! 🥟"
+            },
+            {
+                q: "Fill in: 'Kurkure _____ Masala'",
+                options: ["Desi Beats", "Solid Masti", "Masala Munch", "Tamatar"],
+                correct: 0,
+                type: "mcq"
+            },
+            {
+                q: "Which ice cream brand has a heart logo?",
+                options: ["Amul", "Kwality Wall's", "Mother Dairy", "Vadilal"],
+                correct: 1,
+                type: "mcq"
+            },
+            {
+                q: "What does Anchal drink with her snacks? (Probably)",
+                options: ["Water", "Cold Drink", "Chai", "All of the above depending on mood"],
+                correct: 3,
+                type: "mcq"
+            },
+            {
+                q: "Fill in: '_____ Bytes' - Small biscuit snacks",
+                answer: ["milk"],
+                type: "fill"
+            },
+            {
+                q: "Which is NOT a real Lays flavor in India?",
+                options: ["Blue Magic", "India's Magic Masala", "Spanish Tomato Tango", "American Style Cream & Onion"],
+                correct: 0,
+                type: "mcq"
+            }
+        ];
+
+        // State variables
+        let currentBookQ = 0;
+        let currentMusicQ = 0;
+        let currentFoodQ = 0;
+        let score = 0;
+        let yesScale = 1;
+        let noScale = 1;
+        let noClicks = 0;
+        let currentRating = 0;
+
+        // IMPROVED Mouse tracking for eyes - more responsive
+        document.addEventListener('mousemove', (e) => {
+            const eyes = document.querySelectorAll('.eye');
+            eyes.forEach(eye => {
+                const pupil = eye.querySelector('.pupil');
+                const rect = eye.getBoundingClientRect();
+                const eyeCenterX = rect.left + rect.width / 2;
+                const eyeCenterY = rect.top + rect.height / 2;
+                
+                // Calculate angle and distance
+                const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+                const distance = Math.min(5, Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 10);
+                
+                // Move pupil based on angle and distance
+                const pupilX = Math.cos(angle) * distance;
+                const pupilY = Math.sin(angle) * distance;
+                
+                pupil.style.transform = `translate(calc(-50% + ${pupilX}px), calc(-50% + ${pupilY}px))`;
+            });
+        });
+
+        function checkPetName() {
+            const ans = document.getElementById('pet-answer').value.toLowerCase().trim();
+            if (ans === 'charlie') {
+                document.getElementById('page1').classList.add('hidden');
+                document.getElementById('page2').classList.remove('hidden');
+                loadBookQuestion();
+            } else {
+                document.getElementById('pet-error').textContent = "Wrong! Try again! Hint: It's a dog's name 🐕";
+                document.getElementById('pet-error').classList.remove('hidden');
+            }
+        }
+
+        function loadBookQuestion() {
+            const q = bookQuestions[currentBookQ];
+            const container = document.getElementById('book-quiz-container');
+            
+            let html = `<div class="question-text">${q.q}</div>`;
+            
+            if (q.type === 'mcq') {
+                html += `<div class="options-container">`;
+                q.options.forEach((opt, idx) => {
+                    html += `
+                        <label class="option-label">
+                            <input type="radio" name="book-answer" value="${idx}">
+                            ${opt}
+                        </label>
+                    `;
+                });
+                html += `</div>`;
+            } else {
+                html += `
+                    <input type="text" id="book-fill-answer" placeholder="Type your answer..." style="width: 100%; margin: 15px 0;">
+                `;
+            }
+            
+            html += `<button class="btn" onclick="checkBookAnswer()">Submit 📖</button>`;
+            html += `<div id="book-error" class="error-msg hidden"></div>`;
+            
+            container.innerHTML = html;
+            document.getElementById('book-q-num').textContent = currentBookQ + 1;
+            document.getElementById('book-progress').style.width = ((currentBookQ / bookQuestions.length) * 100) + '%';
+        }
+
+        function checkBookAnswer() {
+            const q = bookQuestions[currentBookQ];
+            let correct = false;
+            
+            if (q.type === 'mcq') {
+                const selected = document.querySelector('input[name="book-answer"]:checked');
+                if (selected && parseInt(selected.value) === q.correct) correct = true;
+            } else {
+                const ans = document.getElementById('book-fill-answer').value.toLowerCase().trim();
+                if (q.answer.includes(ans)) correct = true;
+            }
+            
+            if (correct) {
+                score++;
+                currentBookQ++;
+                if (currentBookQ < bookQuestions.length) {
+                    loadBookQuestion();
+                } else {
+                    document.getElementById('page2').classList.add('hidden');
+                    document.getElementById('page3').classList.remove('hidden');
+                }
+            } else {
+                document.getElementById('book-error').textContent = "Wrong! Try again! 💭";
+                document.getElementById('book-error').classList.remove('hidden');
+            }
+        }
+
+        function handleMusicNo() {
+            noClicks++;
+            yesScale += 0.3;
+            noScale = Math.max(0.4, noScale - 0.2);
+            
+            const yesBtn = document.getElementById('btn-yes-music');
+            const noBtn = document.getElementById('btn-no-music');
+            const eye1 = document.getElementById('eye1');
+            const eye2 = document.getElementById('eye2');
+            const mouth = document.getElementById('yes-mouth');
+            const msg = document.getElementById('music-msg');
+            
+            yesBtn.style.transform = `scale(${yesScale})`;
+            noBtn.style.transform = `scale(${noScale})`;
+            noBtn.style.opacity = Math.max(0.3, 1 - (noClicks * 0.15));
+            
+            // Move NO button randomly after 2 clicks
+            if (noClicks > 1) {
+                noBtn.style.position = 'absolute';
+                noBtn.style.left = (Math.random() * 300 - 150) + 'px';
+                noBtn.style.top = (Math.random() * 150 - 75) + 'px';
+                noBtn.style.transition = 'all 0.3s ease';
+            }
+            
+            // Change eyes emotion with more dramatic effects
+            if (noClicks === 1) {
+                eye1.classList.add('sad');
+                eye2.classList.add('sad');
+                mouth.classList.add('sad');
+                eye1.classList.add('crying');
+                eye2.classList.add('crying');
+                msg.textContent = "Aww, why are you being mean? 😢💔";
+            } else if (noClicks === 2) {
+                eye1.classList.remove('sad', 'crying');
+                eye2.classList.remove('sad', 'crying');
+                eye1.classList.add('angry');
+                eye2.classList.add('angry');
+                mouth.classList.remove('sad');
+                mouth.classList.add('angry');
+                msg.textContent = "Okay, now I'm MAD! 😠🔥";
+            } else if (noClicks >= 3) {
+                eye1.classList.remove('angry');
+                eye2.classList.remove('angry');
+                eye1.classList.add('happy');
+                eye2.classList.add('happy');
+                mouth.classList.remove('angry');
+                mouth.classList.add('happy');
+                msg.innerHTML = "You can't escape! YES is DOMINATING! 😈🎉<br>Give up and click YES!";
+            }
+        }
+
+        function handleMusicYes() {
+            document.getElementById('page3').classList.add('hidden');
+            document.getElementById('page4').classList.remove('hidden');
+            loadMusicQuestion();
+        }
+
+        function loadMusicQuestion() {
+            const q = musicQuestions[currentMusicQ];
+            const container = document.getElementById('music-quiz-container');
+            
+            let html = `<div class="question-text">${q.q}</div>`;
+            
+            if (q.type === 'mcq') {
+                html += `<div class="options-container">`;
+                q.options.forEach((opt, idx) => {
+                    html += `
+                        <label class="option-label">
+                            <input type="radio" name="music-answer" value="${idx}">
+                            ${opt}
+                        </label>
+                    `;
+                });
+                html += `</div>`;
+            }
+            
+            html += `<button class="btn" onclick="checkMusicAnswer()">Submit 🎵</button>`;
+            html += `<div id="music-error" class="error-msg hidden"></div>`;
+            
+            container.innerHTML = html;
+            document.getElementById('music-q-num').textContent = currentMusicQ + 1;
+            document.getElementById('music-progress').style.width = ((currentMusicQ / musicQuestions.length) * 100) + '%';
+        }
+
+        function checkMusicAnswer() {
+            const q = musicQuestions[currentMusicQ];
+            const selected = document.querySelector('input[name="music-answer"]:checked');
+            
+            if (selected && parseInt(selected.value) === q.correct) {
+                score++;
+                currentMusicQ++;
+                if (currentMusicQ < musicQuestions.length) {
+                    loadMusicQuestion();
+                } else {
+                    document.getElementById('page4').classList.add('hidden');
+                    document.getElementById('page5').classList.remove('hidden');
+                }
+            } else {
+                document.getElementById('music-error').textContent = "Wrong! Try again! 🎶";
+                document.getElementById('music-error').classList.remove('hidden');
+            }
+        }
+
+        function goToFoodQuiz() {
+            document.getElementById('page5').classList.add('hidden');
+            document.getElementById('page6').classList.remove('hidden');
+            loadFoodQuestion();
+        }
+
+        function loadFoodQuestion() {
+            const q = foodQuestions[currentFoodQ];
+            const container = document.getElementById('food-quiz-container');
+            
+            let html = '';
+            if (q.taunt) {
+                html += `<p class="taunt-text">${q.taunt}</p>`;
+            }
+            
+            html += `<div class="question-text">${q.q}</div>`;
+            
+            if (q.type === 'mcq') {
+                html += `<div class="options-container">`;
+                q.options.forEach((opt, idx) => {
+                    html += `
+                        <label class="option-label">
+                            <input type="radio" name="food-answer" value="${idx}">
+                            ${opt}
+                        </label>
+                    `;
+                });
+                html += `</div>`;
+            } else {
+                html += `
+                    <input type="text" id="food-fill-answer" placeholder="Type your answer..." style="width: 100%; margin: 15px 0;">
+                `;
+            }
+            
+            html += `<button class="btn" onclick="checkFoodAnswer()">Submit 🍕</button>`;
+            html += `<div id="food-error" class="error-msg hidden"></div>`;
+            
+            container.innerHTML = html;
+            document.getElementById('food-q-num').textContent = currentFoodQ + 1;
+            document.getElementById('food-progress').style.width = ((currentFoodQ / foodQuestions.length) * 100) + '%';
+        }
+
+        function checkFoodAnswer() {
+            const q = foodQuestions[currentFoodQ];
+            let correct = false;
+            
+            if (q.type === 'mcq') {
+                const selected = document.querySelector('input[name="food-answer"]:checked');
+                if (selected && parseInt(selected.value) === q.correct) correct = true;
+            } else {
+                const ans = document.getElementById('food-fill-answer').value.toLowerCase().trim();
+                if (q.answer.includes(ans)) correct = true;
+            }
+            
+            if (correct) {
+                score++;
+                currentFoodQ++;
+                if (currentFoodQ < foodQuestions.length) {
+                    loadFoodQuestion();
+                } else {
+                    document.getElementById('page6').classList.add('hidden');
+                    document.getElementById('page7').classList.remove('hidden');
+                }
+            } else {
+                document.getElementById('food-error').textContent = "Wrong! Try again! 🍔";
+                document.getElementById('food-error').classList.remove('hidden');
+            }
+        }
+
+        function checkBrother() {
+            const ans = document.getElementById('brother-answer').value.toLowerCase().trim();
+            if (ans === 'keshav') {
+                score++;
+                document.getElementById('page7').classList.add('hidden');
+                document.getElementById('page8').classList.remove('hidden');
+            } else {
+                document.getElementById('brother-error').textContent = "Wrong! Try again! Hint: It starts with K and he's awesome 😎";
+                document.getElementById('brother-error').classList.remove('hidden');
+            }
+        }
+
+        function goToFinal() {
+            document.getElementById('page8').classList.add('hidden');
+            document.getElementById('page9').classList.remove('hidden');
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('total-questions').textContent = '30';
+            
+            const percentage = (score / 30) * 100;
+            let msg = '';
+            if (percentage === 100) msg = "Perfect! You know yourself well! 🌟";
+            else if (percentage >= 80) msg = "Great job! Almost perfect! 🎉";
+            else if (percentage >= 60) msg = "Not bad! But you can do better! 💪";
+            else if (percentage >= 40) msg = "Hmm... do you even know yourself? 🤔";
+            else msg = "Were you even paying attention? 😅";
+            
+            document.getElementById('score-message').textContent = msg;
+        }
+
+        function handleRating(stars) {
+            const starElements = document.querySelectorAll('.star');
+            const msg = document.getElementById('rating-message');
+            
+            if (stars < 5) {
+                // Make stars sad and reject
+                starElements.forEach((star, idx) => {
+                    if (idx < stars) {
+                        star.classList.add('sad');
+                        star.style.color = '#ddd';
+                    }
+                });
+                
+                const messages = [
+                    "1 star? REALLY? After ALL THIS? 😭💔",
+                    "2 stars? My heart is SHATTERED! 💔💔",
+                    "3 stars? Is that ALL I'm worth to you? 😢",
+                    "4 stars? SO CLOSE! Give me that 5th star! ⭐"
+                ];
+                msg.textContent = messages[stars - 1];
+                msg.style.color = '#ff4500';
+                
+                // Reset after animation
+                setTimeout(() => {
+                    starElements.forEach(star => {
+                        star.classList.remove('sad');
+                        star.classList.remove('active');
+                    });
+                }, 1500);
+            } else {
+                // 5 stars accepted!
+                starElements.forEach(star => {
+                    star.classList.add('active');
+                    star.style.color = '#ffd700';
+                });
+                msg.textContent = "5 STARS! YAY! You're the BEST! 🌟🌟🌟🌟🌟";
+                msg.style.color = '#32cd32';
+                document.getElementById('final-submit').classList.remove('hidden');
+                currentRating = 5;
+            }
+        }
+
+        function submitFinal() {
+            console.log('Anchal rated:', currentRating, 'stars');
+            console.log('Anchal scored:', score, 'out of 30');
+            
+            localStorage.setItem('anchal_score', JSON.stringify({
+                score: score,
+                total: 30,
+                rating: currentRating,
+                timestamp: new Date().toLocaleString()
+            }));
+            
+            document.getElementById('page9').classList.add('hidden');
+            document.getElementById('page10').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

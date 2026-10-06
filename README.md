@@ -1,1 +1,0 @@
-eneyetee is an anonymous social network for NIT students. Share confessions, exam banter, hostel tea and campus alerts with a fresh stealth persona on every post. Shuffle your identity, set posts to self-destruct in 24h, vote, reply in threads, and watch the live campus radar and daily poll. Dark, neon, and totally unnamed.
